@@ -3,11 +3,20 @@ Required to be installed first:
 dnSpy
 dotpeek
 Unity 2019.4.26f1
+
 Required but included: (no install needed)
 de4dot
 pdb2mdb
 
-DotPeek: The bat will launch and wait for you to complete the dotpeek step.  Any UI driven tool will be like this.  DO NOT close the bat terminal window.
+Setup:
+Select 3 folders where the Release version of the game, the folder where the debug is (if first time pick the folder where you want it to be), and the Unity path are. Release and Debug can't be in the same directory.  The normal locations used for these are prefilled in, if it doesn't match your system adjust accordingly.
+Select 2 files, the DotPeek exe, usually dotPeek64.exe and dnSpy exe, usually dsSpy.exe.
+
+After setup, click start.  You will get a warning that the DEBUG directory will be cleared.  If there is anything that isn't in the mod folder that you would like to save, now is the time to do so.  That circumstance is rather limited.  It is advised that you have UnityModManager installed and up to date on your Release version to update the Debug automatically.  You will have to install UnityModManager in the debug build if you do not.
+
+THE ONLY DIRECTORY THAT WILL HAVE POTENTIAL DATA LOSS IS WHAT YOU HAVE DEBUG WRATH SET TO! YOU HAVE BEEN WARNED, I ACCEPT NO RESPONSIBITY IN ANY DATA LOSS. ANYTHING INSIDE DEBUG WRATH PATH EXCEPT THE MODS FOLDER WILL BE GONE.
+
+DotPeek: The application will launch and wait for you to complete the dotpeek step.  Any UI driven tool needed to complete the process will be like this.  DO NOT close the main app.
  * With dotpeek we will export the assembly to a project.
  * Load the assembly, Assembly-CSharp.dll by going to file->open and then the path to the assembly in the DEBUG wrath folder.  The assembly is located in ./Wrath_Data/Managed
  * Right click on the assembly in the Assembly Explorer and select Export to Project
