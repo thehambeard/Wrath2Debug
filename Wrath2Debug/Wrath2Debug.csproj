@@ -239,6 +239,9 @@
     <Content Include="de4dot\Test.Rename.pdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Instructions.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="pdb2mdb\Microsoft.DiaSymReader.Converter.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -1,0 +1,65 @@
+This bat will create a debug copy of the game for you.
+Required to be installed first:
+dnSpy
+dotpeek
+Unity 2019.4.26f1
+de4dot (included) no install needed
+pdb2mdb (included) no install needed
+
+***Note: If you have any errors or a step doesn't work you can always enter "wrath2debug.bat > log.txt" at the commandline to have all output sent to a log file for investigation.
+
+Step 1: Edit the BAT to the locations of the tools that are needed in the SET pathes.  
+ * I have to 4 system env variables that are pointed at the vanilla version, the debug version (or where the debug is GOING to be), Unity debug libs, and the regular Unity Mono.  
+ * If you do not want to have system env's you can just add a PATH= at the top of the BAT.
+ * You do not have to set up PATHS for the included tools as long as you keep the file stucture the same as how it comes in the zip file.
+ * Refer to the included pictures on how to set up the paths.
+ * This should be the only time that you have to complete this step.
+ 
+Step 2: Run wrath2debug.bat
+ * You should see a lot happening, this is normal let it run.
+ * If this is your first time running it you may get two errors in the beginning stating that a directory doesn't exsit, that is normal.
+ * Do note, if you have any mods in the mod folder for you debug build any future runs will save those mods for you.  It doe not copy mods from your clean retail version.
+ 
+Step 3: The bat will launch and wait for you to complete the dotpeek step.  Any UI driven tool will be like this.  DO NOT close the bat terminal window.
+ * With dotpeek we will export the assembly to a project.
+ * Load the assembly, Assembly-CSharp.dll by going to file->open and then the path to the assembly in the DEBUG wrath folder.  The assembly is located in ./Wrath_Data/Managed
+ * Right click on the assembly in the Assembly Explorer and select Export to Project
+ * Just ensure that only "Create *.pdb file" is checked. And save to the defualt directory it suggests.
+ * This step can take a WHILE, you can see the progress in the bottom right corner of dotpeek.  Don't mistake it for crashing/hanging.  It is done once it stops saying Generating 1 item.
+ * Once it is fully completed close only the dotpeek window and the bat will resume automatically.
+ * You may notice that there is a new folder along side your Assembly-CSharp with the same name.  This has a completely decompiled version of the assembly.  Use it as you wish, version control, 
+		you can generate the sln with the pdb from above and load it in Visual Studio, etc.  It isn't important to this process though, just leave it how it is.
+
+Step 4: dnSpy will launch next, very similar to the above set.
+ * Ensure that the Assembly-CSharp.dll from your debug wrath folder is in the Assembly Explorer, if not open it using File-> Open again in the ./Wrath_Data/Managed folder.
+ * Click on the very top level of the Assembly-CSharp (0.0.0.0)
+ * It should show you a few lines for the assembly atributes.
+ * In the window with the attributes, right click and select Edit Assembly Attributes
+ * This will open a new window with the same information but you can edit it
+ * Replace [assembly: Debuggable(DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
+ * With:
+	[assembly: Debuggable(DebuggableAttribute.DebuggingModes.Default | DebuggableAttribute.DebuggingModes.DisableOptimizations
+  | DebuggableAttribute.DebuggingModes.EnableEditAndContinue | DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints)]
+ * Click the compile button in the bottom right of the window.
+ * Now that they are edited, we need to save it. File -> Save Module
+ * Save window will pop up leave everything how it is on the first tab.
+ * Go to the second tab, labeled MD Writer Options
+ * Ensure all the boxes are checked with the exception of "Keep Old MaxStack Value", that one is unchecked
+ * Click Ok
+ * After the module is saved, close dnSpy
+
+Step 5: The wrath2debug script should be finished now with a prompt "Press any key to continue..."
+ * The process of converting a release build to a debug build is now complete.
+ * The boot.config has been copied over to wait for you to connect the VS debugger when you launch the game.
+ 
+Step 6: Connecting the debugger (Visual Studio)
+ * VERY IMPORTANT: You must set your advanced build options. Right click on the c# project, not the solution and select properties. Go to build on the left side of the window and select advanced. In output select Debugging Information: Portable. See figure Step 6d through f.
+ * Launch the debug build, a pop up says you can attach the debugger.
+ * In VS go to Debug -> Attach Unity Debugger
+ * Select you Unity Instance.  Ensure it is the debug game, not the Unity editor.  They will both be in the list if open at the same time.
+ * You are ready now to debug, click ok on the original pop up saying you could attach the debugger.
+ * The game should launch.
+ * In the VS window, you should have a list of modules. Search for your project name. If the mod is loaded by Unity Mod Manager then it should be in the list
+ * If under Symbol Status it states that Symbols not loaded, right click and select load symbols. It should say symbols loaded after that.
+ * You should be all set to live debug now and use break points.
+ * Note: if you use the reload function from UMM on your mod, you will no longer be able to live debug in your assembly.  A restart of the game will fix that.
