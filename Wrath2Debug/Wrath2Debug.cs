@@ -145,7 +145,7 @@ namespace Wrath2Debug
                 Directory.Delete(DebugPath.Text, true);
                 Directory.CreateDirectory(DebugPath.Text);
 
-                LogBox.AppendText("Cloning Vanilla Copy" + Environment.NewLine);
+                LogBox.AppendText("Cloning Vanilla Copy: This will take a while." + Environment.NewLine);
                 CopyFilesRecursively(VanillaPath.Text, DebugPath.Text);
 
                 if (Directory.Exists($".\\Mods"))
