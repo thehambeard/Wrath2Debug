@@ -1,15 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
 using System.Diagnostics;
-using Newtonsoft.Json;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Wrath2Debug
 {
@@ -67,7 +62,7 @@ namespace Wrath2Debug
 
         private bool CheckFile(TextBox textBox)
         {
-            if(!File.Exists(textBox.Text))
+            if (!File.Exists(textBox.Text))
             {
                 textBox.ForeColor = Color.Red;
                 return false;
@@ -119,7 +114,7 @@ namespace Wrath2Debug
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            if(CheckPath(VanillaPath) && CheckPath(DebugPath) && CheckFile(DotPeekPath) && CheckFile(dnSpyPath) && CheckPath(UnityPath))
+            if (CheckPath(VanillaPath) && CheckPath(DebugPath) && CheckFile(DotPeekPath) && CheckFile(dnSpyPath) && CheckPath(UnityPath))
             {
                 StartWarning warn = new StartWarning();
 
@@ -232,6 +227,6 @@ namespace Wrath2Debug
             }
         }
 
-       
+
     }
 }

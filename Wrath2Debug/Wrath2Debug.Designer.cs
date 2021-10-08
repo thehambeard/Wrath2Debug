@@ -52,7 +52,7 @@ namespace Wrath2Debug
             this.VanillaWrathButton.Name = "VanillaWrathButton";
             this.VanillaWrathButton.Size = new System.Drawing.Size(131, 23);
             this.VanillaWrathButton.TabIndex = 2;
-            this.VanillaWrathButton.Text = "Vanilla Wrath";
+            this.VanillaWrathButton.Text = "Release Wrath";
             this.VanillaWrathButton.UseVisualStyleBackColor = true;
             this.VanillaWrathButton.Click += new System.EventHandler(this.VanillaWrathButton_Click);
             // 
