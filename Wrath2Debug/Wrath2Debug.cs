@@ -42,6 +42,12 @@ namespace Wrath2Debug
             if (InstallDialog.SelectedPath != "") VanillaPath.Text = InstallDialog.SelectedPath;
         }
 
+        private void UnityPathButton_Click(object sender, EventArgs e)
+        {
+            InstallDialog.ShowDialog();
+            if (InstallDialog.SelectedPath != "") UnityPath.Text = InstallDialog.SelectedPath;
+        }
+
         private void DebugPathButton_Click(object sender, EventArgs e)
         {
             InstallDialog.ShowDialog();
@@ -59,6 +65,8 @@ namespace Wrath2Debug
             InstallFileDialog.ShowDialog();
             if (InstallFileDialog.FileName != "") dnSpyPath.Text = InstallFileDialog.FileName;
         }
+
+        
 
         private bool CheckFile(TextBox textBox)
         {
@@ -133,11 +141,13 @@ namespace Wrath2Debug
                 if (Directory.Exists($"{DebugPath.Text}\\Mods"))
                 {
                     LogBox.AppendText("Backing up mod folder" + Environment.NewLine);
+                    if(!Directory.Exists(".\\Mods"))
+                        Directory.CreateDirectory(".\\Mods");
                     CopyFilesRecursively($"{DebugPath.Text}\\Mods", ".\\Mods");
                 }
 
                 LogBox.AppendText("Clearing Debug copy" + Environment.NewLine);
-                Directory.Delete(DebugPath.Text, true);
+                Directory.Delete(@"\\?\" + DebugPath.Text, true);
                 Directory.CreateDirectory(DebugPath.Text);
 
                 LogBox.AppendText("Cloning Vanilla Copy: This will take a while." + Environment.NewLine);
@@ -217,7 +227,8 @@ namespace Wrath2Debug
             //Now Create all of the directories
             foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
             {
-                Directory.CreateDirectory(dirPath.Replace(sourcePath, targetPath));
+                var s = @"\\?\" + dirPath.Replace(sourcePath, targetPath);
+                Directory.CreateDirectory(@"\\?\" + dirPath.Replace(sourcePath, targetPath));
             }
 
             //Copy all the files & Replaces any files with the same name
@@ -227,6 +238,6 @@ namespace Wrath2Debug
             }
         }
 
-
+        
     }
 }

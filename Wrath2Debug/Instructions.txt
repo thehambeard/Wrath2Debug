@@ -1,8 +1,8 @@
-This bat will create a debug copy of the game for you.
+This app will create a debug copy of the game for you.
 Required to be installed first:
 dnSpy
 dotpeek
-Unity 2019.4.26f1
+Unity 2020.3.33f1
 
 Required but included: (no install needed)
 de4dot
@@ -22,7 +22,7 @@ DotPeek: The application will launch and wait for you to complete the dotpeek st
  * Right click on the assembly in the Assembly Explorer and select Export to Project
  * Just ensure that only "Create *.pdb file" is checked. And save to the defualt directory it suggests.
  * This step can take a WHILE, you can see the progress in the bottom right corner of dotpeek.  Don't mistake it for crashing/hanging.  It is done once it stops saying Generating 1 item.
- * Once it is fully completed close only the dotpeek window and the bat will resume automatically.
+ * Once it is fully completed close only the dotpeek window and the app will resume automatically.
  * You may notice that there is a new folder along side your Assembly-CSharp with the same name.  This has a completely decompiled version of the assembly.  Use it as you wish, version control, 
 		you can generate the sln with the pdb from above and load it in Visual Studio, etc.  It isn't important to this process though, just leave it how it is.
 

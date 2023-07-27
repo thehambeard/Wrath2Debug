@@ -51,7 +51,7 @@ namespace Wrath2Debug
             this.VanillaWrathButton.Location = new System.Drawing.Point(16, 22);
             this.VanillaWrathButton.Name = "VanillaWrathButton";
             this.VanillaWrathButton.Size = new System.Drawing.Size(131, 23);
-            this.VanillaWrathButton.TabIndex = 2;
+            this.VanillaWrathButton.TabIndex = 1;
             this.VanillaWrathButton.Text = "Release Wrath";
             this.VanillaWrathButton.UseVisualStyleBackColor = true;
             this.VanillaWrathButton.Click += new System.EventHandler(this.VanillaWrathButton_Click);
@@ -61,7 +61,7 @@ namespace Wrath2Debug
             this.VanillaPath.Location = new System.Drawing.Point(153, 25);
             this.VanillaPath.Name = "VanillaPath";
             this.VanillaPath.Size = new System.Drawing.Size(562, 20);
-            this.VanillaPath.TabIndex = 3;
+            this.VanillaPath.TabIndex = 2;
             this.VanillaPath.Text = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure";
             this.VanillaPath.TextChanged += new System.EventHandler(this.VanillaPath_TextChanged);
             // 
@@ -70,7 +70,7 @@ namespace Wrath2Debug
             this.DebugPathButton.Location = new System.Drawing.Point(16, 51);
             this.DebugPathButton.Name = "DebugPathButton";
             this.DebugPathButton.Size = new System.Drawing.Size(131, 23);
-            this.DebugPathButton.TabIndex = 4;
+            this.DebugPathButton.TabIndex = 3;
             this.DebugPathButton.Text = "Debug Wrath";
             this.DebugPathButton.UseVisualStyleBackColor = true;
             this.DebugPathButton.Click += new System.EventHandler(this.DebugPathButton_Click);
@@ -80,7 +80,7 @@ namespace Wrath2Debug
             this.DebugPath.Location = new System.Drawing.Point(153, 54);
             this.DebugPath.Name = "DebugPath";
             this.DebugPath.Size = new System.Drawing.Size(562, 20);
-            this.DebugPath.TabIndex = 5;
+            this.DebugPath.TabIndex = 4;
             this.DebugPath.Text = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure Debug";
             this.DebugPath.TextChanged += new System.EventHandler(this.DebugPath_TextChanged);
             // 
@@ -89,7 +89,7 @@ namespace Wrath2Debug
             this.StartButton.Location = new System.Drawing.Point(326, 167);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(75, 23);
-            this.StartButton.TabIndex = 6;
+            this.StartButton.TabIndex = 11;
             this.StartButton.Text = "Start Conversion";
             this.StartButton.UseVisualStyleBackColor = true;
             this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
@@ -110,14 +110,14 @@ namespace Wrath2Debug
             this.LogBox.Name = "LogBox";
             this.LogBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.LogBox.Size = new System.Drawing.Size(699, 328);
-            this.LogBox.TabIndex = 9;
+            this.LogBox.TabIndex = 12;
             // 
             // DotPeekPathButton
             // 
             this.DotPeekPathButton.Location = new System.Drawing.Point(16, 109);
             this.DotPeekPathButton.Name = "DotPeekPathButton";
             this.DotPeekPathButton.Size = new System.Drawing.Size(131, 23);
-            this.DotPeekPathButton.TabIndex = 4;
+            this.DotPeekPathButton.TabIndex = 7;
             this.DotPeekPathButton.Text = "DotPeek Path";
             this.DotPeekPathButton.UseVisualStyleBackColor = true;
             this.DotPeekPathButton.Click += new System.EventHandler(this.DotPeekPathButton_Click);
@@ -127,7 +127,7 @@ namespace Wrath2Debug
             this.DotPeekPath.Location = new System.Drawing.Point(153, 112);
             this.DotPeekPath.Name = "DotPeekPath";
             this.DotPeekPath.Size = new System.Drawing.Size(562, 20);
-            this.DotPeekPath.TabIndex = 5;
+            this.DotPeekPath.TabIndex = 8;
             this.DotPeekPath.Text = "Path to DotPeek...";
             this.DotPeekPath.TextChanged += new System.EventHandler(this.DotPeekPath_TextChanged);
             // 
@@ -136,7 +136,7 @@ namespace Wrath2Debug
             this.dnSpyPathButton.Location = new System.Drawing.Point(16, 138);
             this.dnSpyPathButton.Name = "dnSpyPathButton";
             this.dnSpyPathButton.Size = new System.Drawing.Size(131, 23);
-            this.dnSpyPathButton.TabIndex = 4;
+            this.dnSpyPathButton.TabIndex = 9;
             this.dnSpyPathButton.Text = "dnSpy Path";
             this.dnSpyPathButton.UseVisualStyleBackColor = true;
             this.dnSpyPathButton.Click += new System.EventHandler(this.dnSpyPathButton_Click);
@@ -146,7 +146,7 @@ namespace Wrath2Debug
             this.dnSpyPath.Location = new System.Drawing.Point(153, 141);
             this.dnSpyPath.Name = "dnSpyPath";
             this.dnSpyPath.Size = new System.Drawing.Size(562, 20);
-            this.dnSpyPath.TabIndex = 5;
+            this.dnSpyPath.TabIndex = 10;
             this.dnSpyPath.Text = "Path to dnSpy...";
             this.dnSpyPath.TextChanged += new System.EventHandler(this.dnSpyPath_TextChanged);
             // 
@@ -155,17 +155,18 @@ namespace Wrath2Debug
             this.UnityPathButton.Location = new System.Drawing.Point(16, 80);
             this.UnityPathButton.Name = "UnityPathButton";
             this.UnityPathButton.Size = new System.Drawing.Size(131, 23);
-            this.UnityPathButton.TabIndex = 10;
+            this.UnityPathButton.TabIndex = 5;
             this.UnityPathButton.Text = "Unity Path";
             this.UnityPathButton.UseVisualStyleBackColor = true;
+            this.UnityPathButton.Click += new System.EventHandler(this.UnityPathButton_Click);
             // 
             // UnityPath
             // 
             this.UnityPath.Location = new System.Drawing.Point(153, 83);
             this.UnityPath.Name = "UnityPath";
             this.UnityPath.Size = new System.Drawing.Size(562, 20);
-            this.UnityPath.TabIndex = 11;
-            this.UnityPath.Text = "C:\\Program Files\\Unity\\Hub\\Editor\\2019.4.26f1";
+            this.UnityPath.TabIndex = 6;
+            this.UnityPath.Text = "C:\\Program Files\\Unity\\Hub\\Editor\\2020.3.33f1";
             this.UnityPath.TextChanged += new System.EventHandler(this.UnityPath_TextChanged);
             // 
             // InstallFileDialog
