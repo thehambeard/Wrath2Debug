@@ -3,7 +3,7 @@
 ## Required software to use the app:
  * dnSpy https://github.com/dnSpy/dnSpy/releases/tag/v6.1.8
  * DotPeek https://www.jetbrains.com/decompiler/
- * Unity 2019.4.26f1 https://unity3d.com/get-unity/download?thank-you=update&download_nid=64741&os=Win 
+ * Unity 2020.3.48f1 https://unity3d.com/get-unity/download?thank-you=update&download_nid=64741&os=Win 
  * pbd2mdb (custom) https://github.com/sczybt/pdb2mdb (this is included in the binary release)
  * de4dot (custom) https://github.com/fireundubh/de4dot/tree/pdbgen (this is included in the binary release)
  
