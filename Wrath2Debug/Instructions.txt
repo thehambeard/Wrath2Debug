@@ -2,7 +2,7 @@ This app will create a debug copy of the game for you.
 Required to be installed first:
 dnSpy
 dotpeek
-Unity 2020.3.33f1
+Unity 2020.3.48f1
 
 Required but included: (no install needed)
 de4dot

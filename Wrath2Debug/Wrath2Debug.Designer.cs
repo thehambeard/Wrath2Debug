@@ -128,7 +128,7 @@ namespace Wrath2Debug
             this.DotPeekPath.Name = "DotPeekPath";
             this.DotPeekPath.Size = new System.Drawing.Size(562, 20);
             this.DotPeekPath.TabIndex = 8;
-            this.DotPeekPath.Text = "Path to DotPeek...";
+            this.DotPeekPath.Text = "<user>\\AppData\\Local\\JetBrains\\Installations\\dotPeek231\\dotPeek64.exe";
             this.DotPeekPath.TextChanged += new System.EventHandler(this.DotPeekPath_TextChanged);
             // 
             // dnSpyPathButton
@@ -166,7 +166,7 @@ namespace Wrath2Debug
             this.UnityPath.Name = "UnityPath";
             this.UnityPath.Size = new System.Drawing.Size(562, 20);
             this.UnityPath.TabIndex = 6;
-            this.UnityPath.Text = "C:\\Program Files\\Unity\\Hub\\Editor\\2020.3.33f1";
+            this.UnityPath.Text = "C:\\Program Files\\Unity\\Hub\\Editor\\2020.3.48f1";
             this.UnityPath.TextChanged += new System.EventHandler(this.UnityPath_TextChanged);
             // 
             // InstallFileDialog

@@ -28,6 +28,10 @@ namespace Wrath2Debug
                 dnSpyPath.Text = _savedPaths[dnSpyPath.Name];
                 UnityPath.Text = _savedPaths[UnityPath.Name];
             }
+            else
+            {
+                DotPeekPath.Text = DotPeekPath.Text.Replace("<user>", Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+            }
 
             CheckPath(VanillaPath);
             CheckPath(DebugPath);
@@ -38,32 +42,49 @@ namespace Wrath2Debug
 
         private void VanillaWrathButton_Click(object sender, EventArgs e)
         {
-            InstallDialog.ShowDialog();
-            if (InstallDialog.SelectedPath != "") VanillaPath.Text = InstallDialog.SelectedPath;
+            if (Directory.Exists(VanillaPath.Text))
+                InstallDialog.SelectedPath = VanillaPath.Text;
+            var result = InstallDialog.ShowDialog();
+            if (InstallDialog.SelectedPath != "" && result == DialogResult.OK)
+                VanillaPath.Text = InstallDialog.SelectedPath;
         }
 
         private void UnityPathButton_Click(object sender, EventArgs e)
         {
-            InstallDialog.ShowDialog();
-            if (InstallDialog.SelectedPath != "") UnityPath.Text = InstallDialog.SelectedPath;
+            if (Directory.Exists(UnityPath.Text))
+                InstallDialog.SelectedPath = UnityPath.Text;
+            var result = InstallDialog.ShowDialog();
+            if (InstallDialog.SelectedPath != "" && result == DialogResult.OK)
+                UnityPath.Text = InstallDialog.SelectedPath;
         }
 
         private void DebugPathButton_Click(object sender, EventArgs e)
         {
-            InstallDialog.ShowDialog();
-            if (InstallDialog.SelectedPath != "") DebugPath.Text = InstallDialog.SelectedPath;
+            if (Directory.Exists(DebugPath.Text))
+                InstallDialog.SelectedPath = DebugPath.Text;
+            var result = InstallDialog.ShowDialog();
+            if (InstallDialog.SelectedPath != "" && result == DialogResult.OK)
+                DebugPath.Text = InstallDialog.SelectedPath;
         }
 
         private void DotPeekPathButton_Click(object sender, EventArgs e)
         {
-            InstallFileDialog.ShowDialog();
-            if (InstallFileDialog.FileName != "") DotPeekPath.Text = InstallFileDialog.FileName;
+            var path = Path.GetDirectoryName(DotPeekPath.Text);
+            if (Directory.Exists(path))
+                InstallFileDialog.InitialDirectory = path;
+            var result = InstallFileDialog.ShowDialog();
+            if (InstallFileDialog.FileName != "" && result == DialogResult.OK) 
+                DotPeekPath.Text = InstallFileDialog.FileName;
         }
 
         private void dnSpyPathButton_Click(object sender, EventArgs e)
         {
-            InstallFileDialog.ShowDialog();
-            if (InstallFileDialog.FileName != "") dnSpyPath.Text = InstallFileDialog.FileName;
+            var path = Path.GetDirectoryName(dnSpyPath.Text);
+            if (Directory.Exists(path))
+                InstallFileDialog.InitialDirectory = path;
+            var result = InstallFileDialog.ShowDialog();
+            if (InstallFileDialog.FileName != "" && result == DialogResult.OK)
+                dnSpyPath.Text = InstallFileDialog.FileName;
         }
 
         
@@ -120,6 +141,18 @@ namespace Wrath2Debug
             CheckPath(UnityPath);
         }
 
+        private void SavePathsAndState(string state)
+        {
+            _savedPaths.Clear();
+            _savedPaths.Add(VanillaPath.Name, VanillaPath.Text);
+            _savedPaths.Add(DebugPath.Name, DebugPath.Text);
+            _savedPaths.Add(DotPeekPath.Name, DotPeekPath.Text);
+            _savedPaths.Add(dnSpyPath.Name, dnSpyPath.Text);
+            _savedPaths.Add(UnityPath.Name, UnityPath.Text);
+            _savedPaths.Add("crashed", state);
+            File.WriteAllText(".\\paths.json", JsonConvert.SerializeObject(_savedPaths));
+        }
+
         private void StartButton_Click(object sender, EventArgs e)
         {
             if (CheckPath(VanillaPath) && CheckPath(DebugPath) && CheckFile(DotPeekPath) && CheckFile(dnSpyPath) && CheckPath(UnityPath))
@@ -130,21 +163,22 @@ namespace Wrath2Debug
                 if (warn.DialogResult == DialogResult.Cancel)
                     return;
 
-                _savedPaths.Clear();
-                _savedPaths.Add(VanillaPath.Name, VanillaPath.Text);
-                _savedPaths.Add(DebugPath.Name, DebugPath.Text);
-                _savedPaths.Add(DotPeekPath.Name, DotPeekPath.Text);
-                _savedPaths.Add(dnSpyPath.Name, dnSpyPath.Text);
-                _savedPaths.Add(UnityPath.Name, UnityPath.Text);
-                File.WriteAllText(".\\paths.json", JsonConvert.SerializeObject(_savedPaths));
+                
 
-                if (Directory.Exists($"{DebugPath.Text}\\Mods"))
+                if (Directory.Exists($"{DebugPath.Text}\\Mods")  && _savedPaths.ContainsKey("crashed") && _savedPaths["crashed"].Equals("false"))
                 {
                     LogBox.AppendText("Backing up mod folder" + Environment.NewLine);
-                    if(!Directory.Exists(".\\Mods"))
-                        Directory.CreateDirectory(".\\Mods");
-                    CopyFilesRecursively($"{DebugPath.Text}\\Mods", ".\\Mods");
+                    if(Directory.Exists(".\\Mods"))
+                        Directory.Delete(".\\Mods", true);
+                    Directory.CreateDirectory(".\\Mods");
+                    CopyFilesRecursively($"{DebugPath.Text}\\Mods", $"{Application.StartupPath}\\Mods");
                 }
+                else if (Directory.Exists($"{DebugPath.Text}\\Mods"))
+                {
+                    LogBox.AppendText("Previous conversion attempt failed! Will restore mods from the previous mod cache." + Environment.NewLine);
+                }
+
+                SavePathsAndState("true");
 
                 LogBox.AppendText("Clearing Debug copy" + Environment.NewLine);
                 Directory.Delete(@"\\?\" + DebugPath.Text, true);
@@ -156,7 +190,10 @@ namespace Wrath2Debug
                 if (Directory.Exists($".\\Mods"))
                 {
                     LogBox.AppendText("Restoring mod folder" + Environment.NewLine);
-                    CopyFilesRecursively(".\\Mods", $"{DebugPath.Text}\\Mods");
+                    if (Directory.Exists($"{DebugPath.Text}\\Mods"))
+                        Directory.Delete($"{DebugPath.Text}\\Mods", true);
+                    Directory.CreateDirectory($"{DebugPath.Text}\\Mods");
+                    CopyFilesRecursively($"{Application.StartupPath}\\Mods", $"{DebugPath.Text}\\Mods");
                 }
 
                 LogBox.AppendText("Copying Mono Resources to Debug" + Environment.NewLine);
@@ -218,6 +255,8 @@ namespace Wrath2Debug
                 cmd = Process.Start(dnspy);
                 cmd.WaitForExit();
 
+                SavePathsAndState("false");
+
                 LogBox.AppendText("Conversion complete!" + Environment.NewLine);
             }
         }
@@ -227,7 +266,6 @@ namespace Wrath2Debug
             //Now Create all of the directories
             foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
             {
-                var s = @"\\?\" + dirPath.Replace(sourcePath, targetPath);
                 Directory.CreateDirectory(@"\\?\" + dirPath.Replace(sourcePath, targetPath));
             }
 
