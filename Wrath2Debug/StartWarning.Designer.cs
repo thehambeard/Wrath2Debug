@@ -29,60 +29,62 @@ namespace Wrath2Debug
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.ProceedButton = new System.Windows.Forms.Button();
-            this.WarnCancelButton = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            ProceedButton = new System.Windows.Forms.Button();
+            WarnCancelButton = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(501, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Warning:  Everything in the debug folder will be deleted.  Your mod folder will b" +
-    "e backed up and restored.";
+            label1.AutoSize = true;
+            label1.ForeColor = System.Drawing.Color.Red;
+            label1.Location = new System.Drawing.Point(14, 10);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(562, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Warning:  Everything in the debug folder will be deleted.  Your mod folder will be backed up and restored.";
             // 
             // ProceedButton
             // 
-            this.ProceedButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ProceedButton.Location = new System.Drawing.Point(178, 44);
-            this.ProceedButton.Name = "ProceedButton";
-            this.ProceedButton.Size = new System.Drawing.Size(75, 23);
-            this.ProceedButton.TabIndex = 1;
-            this.ProceedButton.Text = "Proceed";
-            this.ProceedButton.UseVisualStyleBackColor = true;
-            this.ProceedButton.Click += new System.EventHandler(this.ProceedButton_Click);
+            ProceedButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            ProceedButton.Location = new System.Drawing.Point(208, 51);
+            ProceedButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ProceedButton.Name = "ProceedButton";
+            ProceedButton.Size = new System.Drawing.Size(88, 27);
+            ProceedButton.TabIndex = 1;
+            ProceedButton.Text = "Proceed";
+            ProceedButton.UseVisualStyleBackColor = true;
+            ProceedButton.Click += ProceedButton_Click;
             // 
             // WarnCancelButton
             // 
-            this.WarnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.WarnCancelButton.Location = new System.Drawing.Point(259, 44);
-            this.WarnCancelButton.Name = "WarnCancelButton";
-            this.WarnCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.WarnCancelButton.TabIndex = 2;
-            this.WarnCancelButton.Text = "Cancel";
-            this.WarnCancelButton.UseVisualStyleBackColor = true;
+            WarnCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            WarnCancelButton.Location = new System.Drawing.Point(302, 51);
+            WarnCancelButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            WarnCancelButton.Name = "WarnCancelButton";
+            WarnCancelButton.Size = new System.Drawing.Size(88, 27);
+            WarnCancelButton.TabIndex = 2;
+            WarnCancelButton.Text = "Cancel";
+            WarnCancelButton.UseVisualStyleBackColor = true;
             // 
             // StartWarning
             // 
-            this.AcceptButton = this.ProceedButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.WarnCancelButton;
-            this.ClientSize = new System.Drawing.Size(520, 79);
-            this.ControlBox = false;
-            this.Controls.Add(this.WarnCancelButton);
-            this.Controls.Add(this.ProceedButton);
-            this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "StartWarning";
-            this.Text = "StartWarning";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AcceptButton = ProceedButton;
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            CancelButton = WarnCancelButton;
+            ClientSize = new System.Drawing.Size(607, 91);
+            ControlBox = false;
+            Controls.Add(WarnCancelButton);
+            Controls.Add(ProceedButton);
+            Controls.Add(label1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "StartWarning";
+            Text = "StartWarning";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
