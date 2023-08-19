@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Wrath2Debug
@@ -185,7 +186,7 @@ namespace Wrath2Debug
                 Directory.CreateDirectory(DebugPath.Text);
 
                 LogBox.AppendText("Cloning Vanilla Copy: This will take a while." + Environment.NewLine);
-                CopyFilesRecursively(VanillaPath.Text, DebugPath.Text);
+                CopyFilesRecursively(VanillaPath.Text, DebugPath.Text, SymlinkCheckbox.Checked);
 
                 if (Directory.Exists($".\\Mods"))
                 {
@@ -261,21 +262,57 @@ namespace Wrath2Debug
             }
         }
 
-        private static void CopyFilesRecursively(string sourcePath, string targetPath)
+        static readonly string[] SymlinkFolderNames = new string[]
+        {
+            @"Bundles",
+            @"Wrath_Data\StreamingAssets",
+            @"DigitalRewards"
+        };
+
+        static IEnumerable<string> GetSymlinkFolders(string basePath) => SymlinkFolderNames.Select(n => Path.Join(basePath, n));
+
+        static IEnumerable<string> GetParentDirectories(string path)
+        {
+            var parent = Path.GetDirectoryName(path);
+
+            if (parent is null) yield break;
+
+            yield return parent;
+
+            foreach (var ancestor in GetParentDirectories(parent))
+                yield return ancestor;
+        }
+
+        private static void CopyFilesRecursively(string sourcePath, string targetPath, bool symlink = false)
         {
             //Now Create all of the directories
             foreach (string dirPath in Directory.GetDirectories(sourcePath, "*", SearchOption.AllDirectories))
             {
-                Directory.CreateDirectory(@"\\?\" + dirPath.Replace(sourcePath, targetPath));
+                var path = @"\\?\" + dirPath.Replace(sourcePath, targetPath);
+
+                if (symlink)
+                {
+                    if (GetSymlinkFolders(sourcePath).Contains(dirPath))
+                    {
+                        Directory.CreateSymbolicLink(path, dirPath);
+                        continue;
+                    }
+
+                    if (GetSymlinkFolders(sourcePath).Any(symlinkPath => GetParentDirectories(dirPath).Contains(symlinkPath)))
+                        continue;
+                }
+
+                Directory.CreateDirectory(path);
             }
 
             //Copy all the files & Replaces any files with the same name
             foreach (string newPath in Directory.GetFiles(sourcePath, "*.*", SearchOption.AllDirectories))
             {
+                if (symlink && GetSymlinkFolders(sourcePath).Any(symlinkPath => GetParentDirectories(newPath).Contains(symlinkPath)))
+                    continue;
+
                 File.Copy(newPath, newPath.Replace(sourcePath, targetPath), true);
             }
         }
-
-        
     }
 }
