@@ -29,175 +29,200 @@ namespace Wrath2Debug
         /// </summary>
         private void InitializeComponent()
         {
-            this.VanillaWrathButton = new System.Windows.Forms.Button();
-            this.VanillaPath = new System.Windows.Forms.TextBox();
-            this.DebugPathButton = new System.Windows.Forms.Button();
-            this.DebugPath = new System.Windows.Forms.TextBox();
-            this.StartButton = new System.Windows.Forms.Button();
-            this.FolderPathWarning = new System.Windows.Forms.Label();
-            this.InstallDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.LogBox = new System.Windows.Forms.TextBox();
-            this.DotPeekPathButton = new System.Windows.Forms.Button();
-            this.DotPeekPath = new System.Windows.Forms.TextBox();
-            this.dnSpyPathButton = new System.Windows.Forms.Button();
-            this.dnSpyPath = new System.Windows.Forms.TextBox();
-            this.UnityPathButton = new System.Windows.Forms.Button();
-            this.UnityPath = new System.Windows.Forms.TextBox();
-            this.InstallFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.SuspendLayout();
+            VanillaWrathButton = new System.Windows.Forms.Button();
+            VanillaPath = new System.Windows.Forms.TextBox();
+            DebugPathButton = new System.Windows.Forms.Button();
+            DebugPath = new System.Windows.Forms.TextBox();
+            StartButton = new System.Windows.Forms.Button();
+            FolderPathWarning = new System.Windows.Forms.Label();
+            InstallDialog = new System.Windows.Forms.FolderBrowserDialog();
+            LogBox = new System.Windows.Forms.TextBox();
+            DotPeekPathButton = new System.Windows.Forms.Button();
+            DotPeekPath = new System.Windows.Forms.TextBox();
+            dnSpyPathButton = new System.Windows.Forms.Button();
+            dnSpyPath = new System.Windows.Forms.TextBox();
+            UnityPathButton = new System.Windows.Forms.Button();
+            UnityPath = new System.Windows.Forms.TextBox();
+            InstallFileDialog = new System.Windows.Forms.OpenFileDialog();
+            SymlinkCheckbox = new System.Windows.Forms.CheckBox();
+            SuspendLayout();
             // 
             // VanillaWrathButton
             // 
-            this.VanillaWrathButton.Location = new System.Drawing.Point(16, 22);
-            this.VanillaWrathButton.Name = "VanillaWrathButton";
-            this.VanillaWrathButton.Size = new System.Drawing.Size(131, 23);
-            this.VanillaWrathButton.TabIndex = 1;
-            this.VanillaWrathButton.Text = "Release Wrath";
-            this.VanillaWrathButton.UseVisualStyleBackColor = true;
-            this.VanillaWrathButton.Click += new System.EventHandler(this.VanillaWrathButton_Click);
+            VanillaWrathButton.Location = new System.Drawing.Point(19, 25);
+            VanillaWrathButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            VanillaWrathButton.Name = "VanillaWrathButton";
+            VanillaWrathButton.Size = new System.Drawing.Size(153, 27);
+            VanillaWrathButton.TabIndex = 1;
+            VanillaWrathButton.Text = "Release Wrath";
+            VanillaWrathButton.UseVisualStyleBackColor = true;
+            VanillaWrathButton.Click += VanillaWrathButton_Click;
             // 
             // VanillaPath
             // 
-            this.VanillaPath.Location = new System.Drawing.Point(153, 25);
-            this.VanillaPath.Name = "VanillaPath";
-            this.VanillaPath.Size = new System.Drawing.Size(562, 20);
-            this.VanillaPath.TabIndex = 2;
-            this.VanillaPath.Text = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure";
-            this.VanillaPath.TextChanged += new System.EventHandler(this.VanillaPath_TextChanged);
+            VanillaPath.Location = new System.Drawing.Point(178, 29);
+            VanillaPath.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            VanillaPath.Name = "VanillaPath";
+            VanillaPath.Size = new System.Drawing.Size(655, 23);
+            VanillaPath.TabIndex = 2;
+            VanillaPath.Text = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure";
+            VanillaPath.TextChanged += VanillaPath_TextChanged;
             // 
             // DebugPathButton
             // 
-            this.DebugPathButton.Location = new System.Drawing.Point(16, 51);
-            this.DebugPathButton.Name = "DebugPathButton";
-            this.DebugPathButton.Size = new System.Drawing.Size(131, 23);
-            this.DebugPathButton.TabIndex = 3;
-            this.DebugPathButton.Text = "Debug Wrath";
-            this.DebugPathButton.UseVisualStyleBackColor = true;
-            this.DebugPathButton.Click += new System.EventHandler(this.DebugPathButton_Click);
+            DebugPathButton.Location = new System.Drawing.Point(19, 59);
+            DebugPathButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            DebugPathButton.Name = "DebugPathButton";
+            DebugPathButton.Size = new System.Drawing.Size(153, 27);
+            DebugPathButton.TabIndex = 3;
+            DebugPathButton.Text = "Debug Wrath";
+            DebugPathButton.UseVisualStyleBackColor = true;
+            DebugPathButton.Click += DebugPathButton_Click;
             // 
             // DebugPath
             // 
-            this.DebugPath.Location = new System.Drawing.Point(153, 54);
-            this.DebugPath.Name = "DebugPath";
-            this.DebugPath.Size = new System.Drawing.Size(562, 20);
-            this.DebugPath.TabIndex = 4;
-            this.DebugPath.Text = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure Debug";
-            this.DebugPath.TextChanged += new System.EventHandler(this.DebugPath_TextChanged);
+            DebugPath.Location = new System.Drawing.Point(178, 62);
+            DebugPath.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            DebugPath.Name = "DebugPath";
+            DebugPath.Size = new System.Drawing.Size(655, 23);
+            DebugPath.TabIndex = 4;
+            DebugPath.Text = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure Debug";
+            DebugPath.TextChanged += DebugPath_TextChanged;
             // 
             // StartButton
             // 
-            this.StartButton.Location = new System.Drawing.Point(326, 167);
-            this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(75, 23);
-            this.StartButton.TabIndex = 11;
-            this.StartButton.Text = "Start Conversion";
-            this.StartButton.UseVisualStyleBackColor = true;
-            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
+            StartButton.Location = new System.Drawing.Point(380, 193);
+            StartButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            StartButton.Name = "StartButton";
+            StartButton.Size = new System.Drawing.Size(88, 27);
+            StartButton.TabIndex = 11;
+            StartButton.Text = "Start Conversion";
+            StartButton.UseVisualStyleBackColor = true;
+            StartButton.Click += StartButton_Click;
             // 
             // FolderPathWarning
             // 
-            this.FolderPathWarning.AutoSize = true;
-            this.FolderPathWarning.Location = new System.Drawing.Point(13, 9);
-            this.FolderPathWarning.Name = "FolderPathWarning";
-            this.FolderPathWarning.Size = new System.Drawing.Size(255, 13);
-            this.FolderPathWarning.TabIndex = 8;
-            this.FolderPathWarning.Text = "If file path is red it means the folder path is not found.";
+            FolderPathWarning.AutoSize = true;
+            FolderPathWarning.Location = new System.Drawing.Point(15, 10);
+            FolderPathWarning.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            FolderPathWarning.Name = "FolderPathWarning";
+            FolderPathWarning.Size = new System.Drawing.Size(290, 15);
+            FolderPathWarning.TabIndex = 8;
+            FolderPathWarning.Text = "If file path is red it means the folder path is not found.";
             // 
             // LogBox
             // 
-            this.LogBox.Location = new System.Drawing.Point(16, 199);
-            this.LogBox.Multiline = true;
-            this.LogBox.Name = "LogBox";
-            this.LogBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.LogBox.Size = new System.Drawing.Size(699, 328);
-            this.LogBox.TabIndex = 12;
+            LogBox.Location = new System.Drawing.Point(19, 230);
+            LogBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            LogBox.Multiline = true;
+            LogBox.Name = "LogBox";
+            LogBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            LogBox.Size = new System.Drawing.Size(815, 378);
+            LogBox.TabIndex = 12;
             // 
             // DotPeekPathButton
             // 
-            this.DotPeekPathButton.Location = new System.Drawing.Point(16, 109);
-            this.DotPeekPathButton.Name = "DotPeekPathButton";
-            this.DotPeekPathButton.Size = new System.Drawing.Size(131, 23);
-            this.DotPeekPathButton.TabIndex = 7;
-            this.DotPeekPathButton.Text = "DotPeek Path";
-            this.DotPeekPathButton.UseVisualStyleBackColor = true;
-            this.DotPeekPathButton.Click += new System.EventHandler(this.DotPeekPathButton_Click);
+            DotPeekPathButton.Location = new System.Drawing.Point(19, 126);
+            DotPeekPathButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            DotPeekPathButton.Name = "DotPeekPathButton";
+            DotPeekPathButton.Size = new System.Drawing.Size(153, 27);
+            DotPeekPathButton.TabIndex = 7;
+            DotPeekPathButton.Text = "DotPeek Path";
+            DotPeekPathButton.UseVisualStyleBackColor = true;
+            DotPeekPathButton.Click += DotPeekPathButton_Click;
             // 
             // DotPeekPath
             // 
-            this.DotPeekPath.Location = new System.Drawing.Point(153, 112);
-            this.DotPeekPath.Name = "DotPeekPath";
-            this.DotPeekPath.Size = new System.Drawing.Size(562, 20);
-            this.DotPeekPath.TabIndex = 8;
-            this.DotPeekPath.Text = "<user>\\AppData\\Local\\JetBrains\\Installations\\dotPeek231\\dotPeek64.exe";
-            this.DotPeekPath.TextChanged += new System.EventHandler(this.DotPeekPath_TextChanged);
+            DotPeekPath.Location = new System.Drawing.Point(178, 129);
+            DotPeekPath.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            DotPeekPath.Name = "DotPeekPath";
+            DotPeekPath.Size = new System.Drawing.Size(655, 23);
+            DotPeekPath.TabIndex = 8;
+            DotPeekPath.Text = "<user>\\AppData\\Local\\JetBrains\\Installations\\dotPeek231\\dotPeek64.exe";
+            DotPeekPath.TextChanged += DotPeekPath_TextChanged;
             // 
             // dnSpyPathButton
             // 
-            this.dnSpyPathButton.Location = new System.Drawing.Point(16, 138);
-            this.dnSpyPathButton.Name = "dnSpyPathButton";
-            this.dnSpyPathButton.Size = new System.Drawing.Size(131, 23);
-            this.dnSpyPathButton.TabIndex = 9;
-            this.dnSpyPathButton.Text = "dnSpy Path";
-            this.dnSpyPathButton.UseVisualStyleBackColor = true;
-            this.dnSpyPathButton.Click += new System.EventHandler(this.dnSpyPathButton_Click);
+            dnSpyPathButton.Location = new System.Drawing.Point(19, 159);
+            dnSpyPathButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dnSpyPathButton.Name = "dnSpyPathButton";
+            dnSpyPathButton.Size = new System.Drawing.Size(153, 27);
+            dnSpyPathButton.TabIndex = 9;
+            dnSpyPathButton.Text = "dnSpy Path";
+            dnSpyPathButton.UseVisualStyleBackColor = true;
+            dnSpyPathButton.Click += dnSpyPathButton_Click;
             // 
             // dnSpyPath
             // 
-            this.dnSpyPath.Location = new System.Drawing.Point(153, 141);
-            this.dnSpyPath.Name = "dnSpyPath";
-            this.dnSpyPath.Size = new System.Drawing.Size(562, 20);
-            this.dnSpyPath.TabIndex = 10;
-            this.dnSpyPath.Text = "Path to dnSpy...";
-            this.dnSpyPath.TextChanged += new System.EventHandler(this.dnSpyPath_TextChanged);
+            dnSpyPath.Location = new System.Drawing.Point(178, 163);
+            dnSpyPath.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dnSpyPath.Name = "dnSpyPath";
+            dnSpyPath.Size = new System.Drawing.Size(655, 23);
+            dnSpyPath.TabIndex = 10;
+            dnSpyPath.Text = "Path to dnSpy...";
+            dnSpyPath.TextChanged += dnSpyPath_TextChanged;
             // 
             // UnityPathButton
             // 
-            this.UnityPathButton.Location = new System.Drawing.Point(16, 80);
-            this.UnityPathButton.Name = "UnityPathButton";
-            this.UnityPathButton.Size = new System.Drawing.Size(131, 23);
-            this.UnityPathButton.TabIndex = 5;
-            this.UnityPathButton.Text = "Unity Path";
-            this.UnityPathButton.UseVisualStyleBackColor = true;
-            this.UnityPathButton.Click += new System.EventHandler(this.UnityPathButton_Click);
+            UnityPathButton.Location = new System.Drawing.Point(19, 92);
+            UnityPathButton.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            UnityPathButton.Name = "UnityPathButton";
+            UnityPathButton.Size = new System.Drawing.Size(153, 27);
+            UnityPathButton.TabIndex = 5;
+            UnityPathButton.Text = "Unity Path";
+            UnityPathButton.UseVisualStyleBackColor = true;
+            UnityPathButton.Click += UnityPathButton_Click;
             // 
             // UnityPath
             // 
-            this.UnityPath.Location = new System.Drawing.Point(153, 83);
-            this.UnityPath.Name = "UnityPath";
-            this.UnityPath.Size = new System.Drawing.Size(562, 20);
-            this.UnityPath.TabIndex = 6;
-            this.UnityPath.Text = "C:\\Program Files\\Unity\\Hub\\Editor\\2020.3.48f1";
-            this.UnityPath.TextChanged += new System.EventHandler(this.UnityPath_TextChanged);
+            UnityPath.Location = new System.Drawing.Point(178, 96);
+            UnityPath.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            UnityPath.Name = "UnityPath";
+            UnityPath.Size = new System.Drawing.Size(655, 23);
+            UnityPath.TabIndex = 6;
+            UnityPath.Text = "C:\\Program Files\\Unity\\Hub\\Editor\\2020.3.48f1";
+            UnityPath.TextChanged += UnityPath_TextChanged;
             // 
             // InstallFileDialog
             // 
-            this.InstallFileDialog.ValidateNames = false;
+            InstallFileDialog.ValidateNames = false;
+            // 
+            // SymlinkCheckbox
+            // 
+            SymlinkCheckbox.AutoSize = true;
+            SymlinkCheckbox.Location = new System.Drawing.Point(19, 198);
+            SymlinkCheckbox.Name = "SymlinkCheckbox";
+            SymlinkCheckbox.Size = new System.Drawing.Size(159, 19);
+            SymlinkCheckbox.TabIndex = 13;
+            SymlinkCheckbox.Text = "Symlink Large Directories";
+            SymlinkCheckbox.UseVisualStyleBackColor = true;
             // 
             // Wrath2Debug
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(727, 535);
-            this.Controls.Add(this.UnityPath);
-            this.Controls.Add(this.UnityPathButton);
-            this.Controls.Add(this.LogBox);
-            this.Controls.Add(this.FolderPathWarning);
-            this.Controls.Add(this.StartButton);
-            this.Controls.Add(this.dnSpyPath);
-            this.Controls.Add(this.DotPeekPath);
-            this.Controls.Add(this.DebugPath);
-            this.Controls.Add(this.dnSpyPathButton);
-            this.Controls.Add(this.DotPeekPathButton);
-            this.Controls.Add(this.DebugPathButton);
-            this.Controls.Add(this.VanillaPath);
-            this.Controls.Add(this.VanillaWrathButton);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Name = "Wrath2Debug";
-            this.Text = "Wrath2Debug";
-            this.Load += new System.EventHandler(this.Wrath2Debug_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(848, 617);
+            Controls.Add(SymlinkCheckbox);
+            Controls.Add(UnityPath);
+            Controls.Add(UnityPathButton);
+            Controls.Add(LogBox);
+            Controls.Add(FolderPathWarning);
+            Controls.Add(StartButton);
+            Controls.Add(dnSpyPath);
+            Controls.Add(DotPeekPath);
+            Controls.Add(DebugPath);
+            Controls.Add(dnSpyPathButton);
+            Controls.Add(DotPeekPathButton);
+            Controls.Add(DebugPathButton);
+            Controls.Add(VanillaPath);
+            Controls.Add(VanillaWrathButton);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "Wrath2Debug";
+            Text = "Wrath2Debug";
+            Load += Wrath2Debug_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -216,6 +241,7 @@ namespace Wrath2Debug
         private System.Windows.Forms.Button UnityPathButton;
         private System.Windows.Forms.TextBox UnityPath;
         private System.Windows.Forms.OpenFileDialog InstallFileDialog;
+        private System.Windows.Forms.CheckBox SymlinkCheckbox;
     }
 }
 
